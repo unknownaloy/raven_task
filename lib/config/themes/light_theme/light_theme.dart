@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:raven_task/config/themes/colors.dart';
 import 'package:raven_task/config/themes/light_theme/light_text_theme.dart';
 
 ThemeData lightTheme() {
   return ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
-      color: Color(0xffEDF0F5),
+      color: kWhiteColor,
       elevation: 0,
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
     ),
+    scaffoldBackgroundColor: kScaffoldLightColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: kLightTextTheme,
     chipTheme: const ChipThemeData(
