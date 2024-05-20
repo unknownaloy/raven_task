@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:raven_task/presentation/widgets/local_svg_image.dart';
+import 'package:raven_task/resources/assets_res.dart';
+import 'package:raven_task/resources/icon_res.dart';
 
 class RavenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const RavenAppBar({super.key});
@@ -8,18 +10,20 @@ class RavenAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      title: SvgPicture.asset('assets/svgs/company_logo.svg'),
+      title: const LocalSvgImage(
+        assetPath: companyLogo,
+      ),
       centerTitle: false,
       actions: [
-        Image.asset('assets/pngs/profile.png'),
+        Image.asset(profileImage),
         const SizedBox(
           width: 16,
         ),
-        SvgPicture.asset('assets/svgs/globe_icon.svg'),
+        const LocalSvgImage(assetPath: globeIcon),
         const SizedBox(
           width: 16,
         ),
-        SvgPicture.asset('assets/svgs/menu_icon.svg'),
+        const LocalSvgImage(assetPath: menuIcon),
         const SizedBox(
           width: 16,
         ),
