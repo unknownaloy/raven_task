@@ -94,7 +94,7 @@ class ActiveOrderCardUi extends StatelessWidget {
                 const TimeChangePanel(assetPath: arrowDownIcon),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
