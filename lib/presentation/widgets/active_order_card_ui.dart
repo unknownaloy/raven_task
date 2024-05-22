@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raven_task/config/themes/colors.dart';
+import 'package:raven_task/presentation/bloc/trading_bloc.dart';
 import 'package:raven_task/presentation/widgets/local_svg_image.dart';
 import 'package:raven_task/presentation/widgets/symbol_circle_avatar.dart';
 import 'package:raven_task/presentation/widgets/time_change_panel.dart';
@@ -10,6 +12,8 @@ class ActiveOrderCardUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tradingBloc = context.watch<TradingBloc>();
+    final markPrice = tradingBloc.state.markPrice;
     return Container(
       padding: const EdgeInsets.only(left: 16, top: 16, bottom: 16),
       decoration: const BoxDecoration(
@@ -58,7 +62,7 @@ class ActiveOrderCardUi extends StatelessWidget {
                 width: 16,
               ),
               Text(
-                r"$20,634",
+                markPrice?.markPrice ?? '-- --',
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                       fontWeight: FontWeight.w500,
                       height: 24 / 18,

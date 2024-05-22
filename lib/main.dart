@@ -6,7 +6,6 @@ import 'package:raven_task/config/themes/light_theme/light_theme.dart';
 import 'package:raven_task/presentation/bloc/trading_bloc.dart';
 import 'package:raven_task/presentation/bloc/trading_event.dart';
 import 'package:raven_task/raven_app_overview.dart';
-import 'package:raven_task/utils/websocket_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,10 +26,9 @@ class MyApp extends StatelessWidget {
         theme: lightTheme(),
         darkTheme: darkTheme(),
         home: BlocProvider(
-          create: (context) => TradingBloc(websocketManager: WebsocketManager())
-            ..add(
-              const TradingOverviewRequested(),
-            ),
+          create: (context) => TradingBloc()
+            ..add(const TradingOverviewRequested())
+            ..add(const RequestKlineChart()),
           child: const RavenAppOverview(),
         ),
       ),

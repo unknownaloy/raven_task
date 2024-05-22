@@ -7,17 +7,17 @@ class TradingDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return DefaultTabController(
       length: 3,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TradingHeaderUi(),
-          SizedBox(height: 16,),
+          const TradingHeaderUi(),
+          const SizedBox(height: 16,),
           SizedBox(
-            height: 196,
+            height: MediaQuery.of(context).size.height,
             width: double.infinity,
-            child: TabBarView(
+            child: const TabBarView(
               children: <Widget>[
                 ChartViewUi(),
                 Center(

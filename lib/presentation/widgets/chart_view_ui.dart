@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:raven_task/data/enums/chart_time.dart';
 import 'package:raven_task/presentation/widgets/local_svg_image.dart';
 import 'package:raven_task/resources/icon_res.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ChartViewUi extends StatelessWidget {
   const ChartViewUi({super.key});
@@ -15,16 +17,15 @@ class ChartViewUi extends StatelessWidget {
           builder: (context, constraints) => SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(minWidth: constraints.maxWidth),
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('Time'),
-                  Text('1H'),
-                  Text('2H'),
-                  Text('4H'),
-                  Text('1D'),
-                  Text('1W'),
-                  Text('1M'),
+                  const Text('Time'),
+                  ...ChartTime.values.map(
+                    (chart) => Text(
+                      chart.time.toUpperCase(),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -42,6 +43,8 @@ class ChartViewUi extends StatelessWidget {
           ),
         ),
         const Divider(),
+
+        SfCartesianChart(),
       ],
     );
   }
