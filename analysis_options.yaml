@@ -5,7 +5,7 @@ linter:
     lines_longer_than_80_chars: false
     prefer_single_quotes: false
     prefer_constructors_over_static_methods: false
-    sort_pub_dependencies: false
+    sort_pub_dependencies: true
 analyzer:
   exclude:
     - lib/**.freezed.dart

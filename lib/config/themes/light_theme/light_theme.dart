@@ -18,6 +18,7 @@ ThemeData lightTheme() {
     chipTheme: const ChipThemeData(
       backgroundColor: Color(0xffF2BC8C),
     ),
+    dividerColor: kGreyColorShade2.withOpacity(0.10),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0,
       selectedItemColor: Color(0xff7AC7F0),

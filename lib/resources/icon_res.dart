@@ -7,3 +7,4 @@ const globeIcon = "assets/svgs/globe_icon.svg";
 const menuIcon = "assets/svgs/menu_icon.svg";
 const arrowDownIcon = "assets/svgs/arrow_down.svg";
 const arrowUpIcon = "assets/svgs/arrow_up.svg";
+const expandIcon = "assets/svgs/expand.svg";

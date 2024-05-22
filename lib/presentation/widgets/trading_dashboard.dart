@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raven_task/presentation/widgets/chart_view_ui.dart';
 import 'package:raven_task/presentation/widgets/trading_header_ui.dart';
 
 class TradingDashboard extends StatelessWidget {
@@ -12,14 +13,13 @@ class TradingDashboard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           TradingHeaderUi(),
+          SizedBox(height: 16,),
           SizedBox(
             height: 196,
             width: double.infinity,
             child: TabBarView(
               children: <Widget>[
-                Center(
-                  child: Text("It's cloudy here"),
-                ),
+                ChartViewUi(),
                 Center(
                   child: Text("It's rainy here"),
                 ),
