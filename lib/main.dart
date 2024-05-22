@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:raven_task/config/themes/dark_theme/dark_theme.dart';
 import 'package:raven_task/config/themes/light_theme/light_theme.dart';
+import 'package:raven_task/presentation/bloc/trading_bloc.dart';
+import 'package:raven_task/presentation/bloc/trading_event.dart';
 import 'package:raven_task/raven_app_overview.dart';
+import 'package:raven_task/utils/websocket_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +26,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: lightTheme(),
         darkTheme: darkTheme(),
-        home: const RavenAppOverview(),
+        home: BlocProvider(
+          create: (context) => TradingBloc(websocketManager: WebsocketManager())
+            ..add(
+              const TradingOverviewRequested(),
+            ),
+          child: const RavenAppOverview(),
+        ),
       ),
     );
   }

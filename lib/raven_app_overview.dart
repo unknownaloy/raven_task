@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raven_task/presentation/bloc/trading_bloc.dart';
+import 'package:raven_task/presentation/bloc/trading_state.dart';
 import 'package:raven_task/presentation/widgets/active_order_card_ui.dart';
 import 'package:raven_task/presentation/widgets/raven_app_bar.dart';
 import 'package:raven_task/presentation/widgets/trading_dashboard.dart';
@@ -25,12 +28,13 @@ class _RavenAppOverviewState extends State<RavenAppOverview> {
     await channel.ready;
 
     channel.stream.listen(
-      (data) {
-        debugPrint("RavenAppOverview - _testingWebSocket -- data -> $data");
+      (message) {
+        debugPrint("RavenAppOverview - _testingWebSocket -- message -> ${message['data']}");
       },
       onError: (error) {
         // TODO: Handle error
         debugPrint("RavenAppOverview - _testingWebSocket -- error -> $error");
+
       },
     );
   }
@@ -51,28 +55,30 @@ class _RavenAppOverviewState extends State<RavenAppOverview> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: RavenAppBar(),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 8,
+    return Scaffold(
+      appBar: const RavenAppBar(),
+      body: BlocBuilder<TradingBloc, TradingState>(
+        builder: (context, state) => const CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 8,
+              ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: ActiveOrderCardUi(),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 8,
+            SliverToBoxAdapter(
+              child: ActiveOrderCardUi(),
             ),
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: TradingDashboard(),
-          ),
-        ],
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 8,
+              ),
+            ),
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: TradingDashboard(),
+            ),
+          ],
+        ),
       ),
     );
   }
